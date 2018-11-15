@@ -35,3 +35,61 @@ Wichtig: [Limitiertes Styling für :visited](https://hacks.mozilla.org/2010/03/p
 ```
 :focus { }
 ```
+
+## Ein Element, das das erste Kindelement eines anderen Elements ist
+
+```
+:first-child { }
+```
+
+## Ein Element, das das letzte Kindelement eines anderen Elements ist
+
+```
+:last-child { }
+```
+
+## Ein Element basierend auf der Sprache selektieren.
+
+Die Sprache muss nicht explizit für dieses Element mittels lang-Attribut definiert werden. Es kann die Sprachdeklaration von einem Elternelement erben.
+
+```
+:lang() { }
+```
+
+## nth-child
+
+Ausgehend vom ersten Element wird das n-te Element selektiert.
+
+### Das zweite Kindelement selektieren
+```
+li:nth-child(2) {
+  color: red;
+}
+```
+
+### Jedes dritte Kindelement selektieren
+
+```
+li:nth-child(3n) {
+    color: blue;
+}
+```
+
+### Jedes zweite Kindelement beginnend beim dritten selektieren
+
+```
+li:nth-child(2n+3) {
+    background: #000;
+}
+```
+
+## nth-last-child
+
+### Ausgehend vom letzten Element wird das n-te Element selektiert.
+```
+li:nth-last-child(4) {
+    border: 10px solid red;
+}
+```
+
+`nth-last-child` kann genauso angewendet werden wie `nth-child`
