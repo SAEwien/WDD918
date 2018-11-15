@@ -13,4 +13,5 @@ Folien auf <http://sae.matuzo.at/web_basics/>
 * [Background](background.md)
 * [Display](display.md)
 * [Position](position.md)
+* [Flexbox](flexbox.md)
 * [Sonstiges](misc.md)
