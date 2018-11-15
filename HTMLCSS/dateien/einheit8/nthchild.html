@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+
+  <style>
+    li:first-child {
+      background-color: red;
+    }
+
+    li:nth-child(2) {
+      background-color: blue;
+    }
+
+    li:nth-child(11) {
+      background-color: orange;
+    }
+
+    li:nth-child(odd) {
+      background-color: fuchsia;
+    }
+
+    li:nth-child(even) {
+      background-color: aqua;
+    }
+
+    li:nth-child(3n) {
+      background-color: rebeccapurple;
+    }
+
+    li:nth-child(4n+2) {
+      background-color: salmon;
+    }
+
+    li:nth-child(-n+3) {
+      font-size: 30px;
+    }
+
+    li:nth-last-child(2) {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+ 
+    
+    /* li:nth-child(n+1):nth-child(-n+3) {
+      font-size: 30px;
+    } */
+
+    li:last-child {
+      background-color: green;
+    }
+
+    ul:first-child {
+      background: red;
+    }
+
+    li:nth-last-child(-n+3) {
+      background-color: black;
+      color: #fff;
+    }
+
+    .parent {
+      border: 10px solid fuchsia;
+    }
+
+    .item {
+      border: 2px solid aqua;
+    }
+
+    .item:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  
+  </style>
+
+</head>
+
+<body>
+  <h2>Liste</h2>
+  <ul>
+    <li>Element 1</li>
+    <li>Element 2</li>
+    <li>Element 3</li>
+    <li>Element 4</li>
+    <li>Element 5</li>
+    <li>Element 6</li>
+    <li>Element 7</li>
+    <li>Element 8</li>
+    <li>Element 9</li>
+    <li>Element 10</li>
+    <li>Element 11</li>
+    <li>Element 12</li>
+    <li>Element 13</li>
+    <li>Element 14</li>
+    <li>Element 15</li>
+    <li>Element 16</li>
+    <li>Element 17</li>
+    <li>Element 18</li>
+    <li>Element 19</li>
+    <li>Element 20</li>
+  </ul>
+
+  <div class="parent">
+    <div class="item">
+      asdasd
+    </div>
+    <div class="item">
+      asdasd
+    </div>
+    <div class="item">
+      asdasd
+    </div>
+  </div>
+</body>
+
+</html>

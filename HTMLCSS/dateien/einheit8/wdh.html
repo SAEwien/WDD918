@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+
+    .parent {
+      border: 10px solid red;
+      max-width: 1200px;
+    }
+
+    .child {
+      width: 50%;
+      border: 10px solid blue;
+    }
+
+    .parent .child {
+      border-color: green;
+    }
+
+    .error {
+      border-color: red;
+    }
+  
+  </style>
+</head>
+<body>
+
+  <div class="parent">
+    <div class="child error">
+      asdasd  
+    </div>
+  </div>
+
+  <div class="child error">
+      asdasd  
+    </div>
+
+
+  <!-- p.test -->
+  <p class="test"></p>
+
+  <!-- p .test -->
+  <p>
+    <strong class="test"></strong>
+  </p>
+  
+</body>
+</html>
