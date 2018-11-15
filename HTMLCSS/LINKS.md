@@ -15,3 +15,6 @@
 * [validator](https://validator.w3.org)
 * [rel=author](https://varvy.com/rel/author.html)
 * [css zen garden](http://www.csszengarden.com/215/)
+* [nth master](http://nthmaster.com/)
+* [stripe generator](http://www.stripegenerator.com)
+* [gradient generator](http://www.colorzilla.com/gradient-editor/)
