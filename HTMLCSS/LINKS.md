@@ -18,3 +18,5 @@
 * [nth master](http://nthmaster.com/)
 * [stripe generator](http://www.stripegenerator.com)
 * [gradient generator](http://www.colorzilla.com/gradient-editor/)
+* [`flex-grow` is weird. Or is it?](https://css-tricks.com/flex-grow-is-weird/)
+* [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
