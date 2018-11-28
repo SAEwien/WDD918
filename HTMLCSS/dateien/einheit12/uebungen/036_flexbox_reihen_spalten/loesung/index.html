@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<title>036_flexbox_reihen_spalten</title>
+
+	<link rel="stylesheet" href="../nichtaendern.css">
+
+	<style>
+		section {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		article {
+			flex-basis: 172px;
+			margin-right: 8px;
+		}
+
+		article:nth-child(4n) {
+			margin-right: 0;
+		}
+	</style>
+</head>
+<body>
+	
+	<section>
+		<article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae laborum fugiat obcaecati fugit libero neque tempora magnam, quaerat ducimus perspiciatis cumque tenetur nostrum error, corrupti nesciunt. Vel, nemo voluptates illum?</article>
+		<article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ut, aperiam reprehenderit architecto corporis quod pariatur hic ex consequuntur perferendis quia. Error harum praesentium veniam alias delectus optio commodi quidem.</article>
+		<article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente vitae aliquam praesentium perspiciatis eos officia quo consequatur, inventore quod similique molestiae eveniet facere sequi rerum, corporis ullam assumenda adipisci necessitatibus.</article>		
+		<article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae laborum fugiat obcaecati fugit libero neque tempora magnam, quaerat ducimus perspiciatis cumque tenetur nostrum error, corrupti nesciunt. Vel, nemo voluptates illum?</article>
+		<article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ut, aperiam reprehenderit architecto corporis quod pariatur hic ex consequuntur perferendis quia. Error harum praesentium veniam alias delectus optio commodi quidem.</article>
+		<article>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente vitae aliquam praesentium perspiciatis eos officia quo consequatur, inventore quod similique molestiae eveniet facere sequi rerum, corporis ullam assumenda adipisci necessitatibus.</article>
+	</section>
+	
+</body>
+</html>

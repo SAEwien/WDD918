@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Uebung</title>
+
+  <style>
+    .wrapper {
+      border: 8px solid #333;
+      font-family: Arial, Helvetica, sans-serif;
+      margin-bottom: 20px;
+      padding: 20px;
+    }
+
+    .wrapper div {
+      background: aqua;
+      padding: 10px;
+    }
+
+    .right {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .center div {
+      width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .left_right {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .two-column {
+      display: flex;
+    }
+
+    .two-column div {
+      flex-basis: 50%;
+      margin: 10px;
+    }
+
+    .three-column {
+      display: flex;
+    }
+
+    .three-column div {
+      flex-basis: 33.333%;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper right">
+    <div>text</div>
+  </div>
+
+  <div class="wrapper center">
+    <div>text</div>
+  </div>
+
+  <div class="wrapper left_right">
+    <div>text1</div>
+    <div>text2</div>
+  </div>
+
+  <div class="wrapper two-column">
+    <div>text</div>
+    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit fugiat placeat recusandae pariatur ipsam ut praesentium dolores quos blanditiis cupiditate, labore magni excepturi omnis, mollitia unde nulla nobis cumque fuga?</div>
+  </div>
+
+  <div class="wrapper three-column">
+    <div>text test test</div>
+    <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem ex odio dicta. Aut perspiciatis quam nisi reprehenderit dolorum eaque asperiores facere delectus est assumenda explicabo, magnam, itaque, totam minima atque.</div>
+    <div>text</div>
+  </div>
+  
+</body>
+</html>

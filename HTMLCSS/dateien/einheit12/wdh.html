@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .position {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      left: -8px;
+      background: red;
+    }
+
+    .layout {
+      border: 10px solid #000;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    /* 
+      Versuch ein mehrspaltiges Layout mit Flexbox zu lösen bei dem zwischen den
+      einzelnen Boxen Abstand ist:
+      Die auskommentierte Variante ist sauberer aber komplizierter.
+      Alternative Lösung: jedes zweite Element bekommt padding.
+     */
+
+    .layout .box {
+      box-sizing: border-box;
+      flex-basis: 33.333%;
+      /* background: blue; */
+      /* flex-basis: calc(33.333% - 13.333px); */
+      /* margin-right: 20px; */
+      margin-bottom: 20px;
+    }
+
+    .box:nth-child(3n+2) {
+      padding: 0 20px;
+    }
+
+    /* .box:nth-child(3n) {
+      margin-right: 0;
+    } */
+
+    .column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .column div {
+      flex-basis: 200px;
+      width: 100px;
+      background: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="position"></div>
+
+  <div class="layout">
+    <div class="box">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat sequi facere dolore dolorem temporibus? Id, aliquid nihil? Excepturi et, aliquam quam cum non, porro iste at omnis distinctio nisi labore.</div>
+    <div class="box">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat sequi facere dolore dolorem temporibus? Id, aliquid nihil? Excepturi et, aliquam quam cum non, porro iste at omnis distinctio nisi labore.</div>
+    <div class="box">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat sequi facere dolore dolorem temporibus? Id, aliquid nihil? Excepturi et, aliquam quam cum non, porro iste at omnis distinctio nisi labore.</div>
+   
+    <div class="box">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat sequi facere dolore dolorem temporibus? Id, aliquid nihil? Excepturi et, aliquam quam cum non, porro iste at omnis distinctio nisi labore.</div>
+    <div class="box">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat sequi facere dolore dolorem temporibus? Id, aliquid nihil? Excepturi et, aliquam quam cum non, porro iste at omnis distinctio nisi labore.</div>
+    <div class="box">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat sequi facere dolore dolorem temporibus? Id, aliquid nihil? Excepturi et, aliquam quam cum non, porro iste at omnis distinctio nisi labore.</div>
+  </div>
+
+  <div class="column">
+    <div></div>
+  </div>
+  
+</body>
+</html>
