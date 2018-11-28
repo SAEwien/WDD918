@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Listen</title>
+
+  <style>
+    .custom {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .custom li {
+      position: relative;
+      padding-left: 15px;
+    }
+
+    .custom li::before {
+      content: "";
+      height: 10px;
+      width: 10px;
+      background: red;
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    ol {
+      list-style: lower-alpha;
+    }
+
+    .position {
+      list-style-position: inside;
+    }
+
+  </style>
+</head>
+<body>
+
+  <ul class="custom">
+    <li>Element 1</li>
+    <li>Element 2</li>
+    <li>Element 3</li>
+    <li>Element 4</li>
+    <li>Element 5</li>
+    <li>Element 6</li>
+  </ul>
+  
+  <ol>
+    <li>Element 1</li>
+    <li>Element 2</li>
+    <li>Element 3</li>
+    <li>Element 4</li>
+    <li>Element 5</li>
+    <li>Element 5</li>
+    <li>Element 5</li>
+    <li>Element 5</li>
+    <li>Element 6</li>
+  </ol>
+
+  <ul class="position">
+    <li>Element Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus omnis perferendis debitis nostrum quasi doloribus tenetur voluptates esse cumque, laudantium, totam praesentium dicta voluptas maxime reprehenderit dignissimos consequatur? Ut, illo!</li>
+    <li>Element Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus omnis perferendis debitis nostrum quasi doloribus tenetur voluptates esse cumque, laudantium, totam praesentium dicta voluptas maxime reprehenderit dignissimos consequatur? Ut, illo!</li>
+    <li>Element Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus omnis perferendis debitis nostrum quasi doloribus tenetur voluptates esse cumque, laudantium, totam praesentium dicta voluptas maxime reprehenderit dignissimos consequatur? Ut, illo!</li>
+  </ul>
+  
+</body>
+</html>

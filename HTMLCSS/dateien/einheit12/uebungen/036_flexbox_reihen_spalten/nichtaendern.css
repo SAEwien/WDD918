@@ -1,0 +1,14 @@
+body {
+	color: #fff;
+	font-family: Arial;
+}
+
+section {
+	width: 712px;
+	border: 1px solid red;
+}
+
+article {
+	background: #123456;
+	margin-bottom: 8px;
+}

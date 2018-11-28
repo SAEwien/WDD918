@@ -1,0 +1,82 @@
+/* 🥛🥛🥛🥛🥛 BASE 🐞🐞🐞🐞🐞 */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: #37505c;
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+}
+
+a:link,
+a:visited {
+  color: #f76f8e;
+}
+
+a:focus,
+a:hover {
+  color: #96616b;
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+p:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+/* 🐉🐉🐉🐉🐉 HEADER 💅💅💅💅💅 */
+
+.site-header {
+  border: 10px solid red;
+  text-align: center;
+  position: relative;
+}
+
+.nav-main {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-main__button {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .nav-main__items {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-main__button {
+    display: none;
+  }
+}
+
+
+/* 🥛🥛🥛🥛🥛 HELPER 🐞🐞🐞🐞🐞 */
+
+.visually-hidden {
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}

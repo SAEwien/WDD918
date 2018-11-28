@@ -1,0 +1,2 @@
+- Wiederholung position und flexbox
+- Beginn CSS Umsetzung weblog
