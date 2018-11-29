@@ -20,3 +20,7 @@
 * [gradient generator](http://www.colorzilla.com/gradient-editor/)
 * [`flex-grow` is weird. Or is it?](https://css-tricks.com/flex-grow-is-weird/)
 * [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+* [dribbble](https://dribbble.com)
+* [BEM](http://getbem.com/naming/)
+* [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)
+* [awwwards](https://www.awwwards.com)
