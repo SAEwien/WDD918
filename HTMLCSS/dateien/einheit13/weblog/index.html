@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>weblog</title>
+
+  <meta name="viewport" content="width=device-width" />
+
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1 class="visually-hidden">weblog</h1>
+
+    <a href="#">
+      <img src="svg/weblog_logo.svg" alt="Zur Startseite" width="200" />
+    </a>
+
+    <nav class="nav-main">
+      <button class="nav-main__button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" viewBox="0 0 53 53"><path d="M2 13.5h49a2 2 0 0 0 0-4H2a2 2 0 0 0 0 4zM2 28.5h49a2 2 0 0 0 0-4H2a2 2 0 0 0 0 4zM2 43.5h49a2 2 0 0 0 0-4H2a2 2 0 0 0 0 4z"/></svg>
+        <span class="visually-hidden">Menü</span>
+      </button>
+
+      <ul class="nav-main__items" hidden>
+        <li class="nav-main__item">
+          <a href="#">Home</a>
+        </li>
+        <li class="nav-main__item">
+          <a href="#">Blog</a>
+        </li>
+        <li class="nav-main__item">
+          <a href="#">Über uns</a>
+        </li>
+        <li class="nav-main__item">
+          <a href="#">Kontakt</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="slider">
+      <h2 class="visually-hidden">Ausgewählte Artikel</h2>
+
+      <button class="slider__control slider__control--prev">Zurück</button>
+      <button class="slider__control slider__control--next">Vor</button>
+
+      <ul class="slider__items">
+        <li class="slider__item">
+          <a href="#">
+            <img src="images/320/bild1.jpg" srcset="images/320/bild1.jpg 320w, images/768/bild1.jpg 768w" alt="" />
+            <p class="slider__caption">Lorem ipsum dolor sit amet.</p>
+          </a>
+        </li>
+        <li class="slider__item">
+          <a href="#">
+            <img src="images/320/bild2.jpg" srcset="images/320/bild2.jpg 320w, images/768/bild2.jpg 768w" alt="" />
+            <p class="slider__caption">Lorem ipsum dolor sit amet.</p>
+          </a>
+        </li>
+        <li class="slider__item">
+          <a href="#">
+            <img src="images/320/bild3.jpg" srcset="images/320/bild3.jpg 320w, images/768/bild3.jpg 768w" alt="" />
+            <p class="slider__caption">Lorem ipsum dolor sit amet.</p>
+          </a>
+        </li>
+      </ul>
+
+      <ul class="slider__nav">
+        <li class="slider__nav-item">
+          <button class="slider__nav-button">
+            <span class="visually-hidden">1. Artikel</span>
+          </button>
+        </li>
+        <li class="slider__nav-item">
+          <button class="slider__nav-button">
+            <span class="visually-hidden">2. Artikel</span>
+          </button>
+        </li>
+        <li class="slider__nav-item">
+          <button class="slider__nav-button slider__nav-button--active">
+            <span class="visually-hidden">3. Artikel</span>
+          </button>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Neueste Artikel</h2>
+
+      <div>
+        <article>
+          <h3>Lorem ipsum dolor sit.</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, totam.</p>
+          <img src="images/320/bild2.jpg" alt="" />
+          <a href="#">Performance</a>
+
+          <a href="#">
+            <time datetime="2019-09-24">24.09.2019</time>
+          </a>
+
+          <a href="#">
+            5 Kommentare
+          </a>
+        </article>
+      </div>
+
+      <button>Mehr laden</button>
+    </section>
+
+    <aside>
+      <h2>Newsletter anmelden</h2>
+
+      <form>
+        <label for="email">E-Mail</label>
+        <input type="email" placeholder="E-Mail Adresse" id="email" />
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing.</p>
+        <button type="submit">Anmelden</button>
+      </form>
+    </aside>
+
+    <aside>
+      <h2>Beliebte Artikel</h2>
+
+      <ul>
+        <li>
+          <h3>
+            <a href="#">
+              Dies das Ananas
+            </a>
+          </h3>
+          <a href="#">Workflow</a>
+          <img src="images/thumbs/thumb1.jpg" alt="" />
+        </li>
+        <li>
+          <h3>
+            <a href="#">
+              Dies das Ananas
+            </a>
+          </h3>
+          <a href="#">HTML</a>
+          <img src="images/thumbs/thumb1.jpg" alt="" />
+        </li>
+        <li>
+          <h3>
+            <a href="#">
+              Dies das Ananas Dies das Ananas Dies das Ananas
+            </a>
+          </h3>
+          <a href="#">Software</a>
+          <img src="images/thumbs/thumb1.jpg" alt="" />
+        </li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer>
+    <div>
+      <div>
+        <h2>Über <a href="#">Weblog</a></h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo omnis voluptatum temporibus quisquam eveniet quod impedit ratione aut ullam laboriosam quos, accusamus saepe nesciunt suscipit quaerat sint neque incidunt sunt.</p>
+      </div>
+
+      <div>
+        <h2>
+          <span>Weblog</span> in sozialen Medien
+        </h2>
+
+        <ul>
+          <li>
+            <a href="#">
+              Github
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Youtube
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Twitter
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Facebook
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Tags</h2>
+
+        <ul>
+          <li>
+            <a href="#">
+              HTML
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Performance
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Software
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Workflow
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              Javascript
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <small>
+        &copy; 2018 weblog <a href="#">SAE</a>
+      </small>
+    </div>
+  </footer>
+  
+</body>
+</html>
