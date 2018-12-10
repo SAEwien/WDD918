@@ -24,3 +24,10 @@
 * [BEM](http://getbem.com/naming/)
 * [ITCSS](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/)
 * [awwwards](https://www.awwwards.com)
+* [Paint the Web with CSS - Eva Lettner @ WeAreDevelopers Conference 2017](https://www.youtube.com/watch?v=k8JD1A9uVaM)
+* [Emoji List](https://unicode.org/emoji/charts/full-emoji-list.html)
+* [Writing CSS with Accessibility in Mind](https://medium.com/@matuzo/writing-css-with-accessibility-in-mind-8514a0007939)
+* [Writing HTML with accessibility in mind](https://medium.com/alistapart/writing-html-with-accessibility-in-mind-a62026493412)
+* [Writing JavaScript with accessibility in mind](https://medium.com/@matuzo/writing-javascript-with-accessibility-in-mind-a1f6a5f467b9)
+* [pure css pink](http://diana-adrianne.com/purecss-pink/)
+
