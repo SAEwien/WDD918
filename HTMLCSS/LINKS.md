@@ -30,4 +30,6 @@
 * [Writing HTML with accessibility in mind](https://medium.com/alistapart/writing-html-with-accessibility-in-mind-a62026493412)
 * [Writing JavaScript with accessibility in mind](https://medium.com/@matuzo/writing-javascript-with-accessibility-in-mind-a1f6a5f467b9)
 * [pure css pink](http://diana-adrianne.com/purecss-pink/)
-
+* [24 WAYS to impress your friends](https://24ways.org/)
+* [Web Development Advent Calendars for 2018](http://adrianroselli.com/2018/12/web-development-advent-calendars-for-2018.html)
+* [Flexbox Froggy](https://flexboxfroggy.com/)
