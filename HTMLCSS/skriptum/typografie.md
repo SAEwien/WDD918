@@ -83,6 +83,26 @@ p {
 
 **lighter** - Text wird entsprechend dünner formatiert
 
+## font-weight (Schriftstärke)
+
+Mit font-weight gibt man an, wie stark Text dargestellt werden soll.
+
+```
+p {
+    font-weight: bold;
+}
+```
+
+**100 - 900** - Verschiedenste Abstufungen der Schriftstärke. Viele Schriften bieten nicht genug Schnitte an um so feine Unterschiede zu machen. Falls nur zwei Schriftschnitte zur Verfügung stehen, entsprechen die Werte 100-500 normal und 600-900 bold.
+
+**normal** - Text wird normal dargestellt (entspricht dem Wert 400)
+
+**bold** - Text wird fett dargestellt (entspricht dem Wert 700)
+
+**bolder** - Der Text wird in der nächst fetteren Stufe als sein Eltern-Element dargestellt.
+
+**lighter** - Text wird entsprechend dünner formatiert
+
 ## font-size (Schriftgröße)
 
 Die Schriftgröße wird üblicherweise in px, rem oder em angegeben.
@@ -131,3 +151,110 @@ p {
 **line-trough** - Text durchgestrichen
 
 **none** - Keine Linien
+
+
+## text-align (Textausrichtung)
+
+text-align gibt die Ausrichtung des Inhalts eines Elements an.
+
+```
+p {
+  text-align: right;
+}
+```
+
+**left** - Linkbündiger Text
+
+**right** - Rechtsbündiger Text
+
+**center** - Zentrierter Text
+
+**justify** - Blocksatz
+
+
+## text-transform (Schrifttransformation)
+
+Darstellung von Text in Klein- oder Großbuchstaben
+
+```
+p {
+  text-transform: uppercase;
+}
+```
+
+**none (Standardwert)** - Das Wort wir normal dargestellt.
+
+**capitalize** - Der erste Buchstabe wird groß dargestellt Vorher: wort text-transform:capitalize;
+
+**uppercase** - Alle Buchstaben werden groß dargestellt
+
+**lowercase** - Alle Buchstaben werden klein dargestellt
+
+## text-indent (Texteinrückung)
+
+Mit text-indent wird die erste Zeile eines Textes ein- oder ausgerückt, je nachdem ob ein positiver oder negative Wert angegeben wird.
+
+```
+p {
+    text-indent: -40px;
+}
+```
+
+
+## font-variant (Schriftvariante)
+
+Mit font-variant stellt man eine Schrift normal (normal) oder in Kapitälchen (small-caps) dar.
+
+```
+h1 {
+  font-variant: small-caps;
+}
+```
+
+## letter-spacing (Buchstabenabstand)
+
+Abstände zwischen Zeichen. Diese Eigenschaft kann in absoluten oder relativen Werten angegeben werden.
+
+```
+p {
+  letter-spacing: 1.5em;
+}
+```
+
+## word-spacing (Wortabstand)
+
+Abstände zwischen Wörtern. Diese Eigenschaft kann in absoluten oder relativen Werten angegeben werden.
+
+```
+p {
+    word-spacing: 1.5em;
+}
+```
+
+## white-space (Leerzeichen)
+
+white-space regelt wie mit Abständen und Tabulatoren umgegangen werden soll.
+
+```
+p {
+    white-space: pre;
+}
+```
+
+**normal** - Wenn mehrere Leerzeichen nebeneinander stehen, wir nur eines angezeigt. Wenn nötig wird der Text bei einem Leerzeichen umgebrochen.
+
+**pre** - Der Text wird wie im &lt;pre&gt;-Tag behandelt, das heisst alle Leerzeichen werden ausgegeben.
+
+**nowrap** - Leerzeichen werden normal behandelt, aber der Text wird nicht umgebrochen.
+
+## ch-Einheit
+
+1ch enspricht der Breite der Ziffer '0'.
+
+```
+div {
+  max-width: 300px
+}
+```
+
+<https://css-tricks.com/the-lengths-of-css/>
