@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>em</title>
+
+  <style>
+    html {
+      font-size: 10px;
+    }
+
+    body {
+      /* font-size: 20px; */
+    }
+
+    div {
+      border: 1px solid red;
+      /* font-size: 16px; */
+      width: 6em; /* 6em = 6 * 16px */
+      /* font-size: 24px; */
+    }
+
+    ul {
+      font-size: 10px;
+    }
+
+    /* ol {
+      font-size: 10px;
+    } 
+
+    li {
+      font-size: 2em;
+    } 
+    */
+
+    ul > li {
+      font-size: 2em;
+    } 
+
+    .button {
+      background: green;
+      color: #fff;
+      border-radius: 4px;
+      border: none;
+      padding: 1em;
+      font-size: 20px;
+    }
+
+    .button--small {
+      font-size: 12px;
+    }
+  
+  </style>
+</head>
+<body>
+  <button class="button button--small">BUtton</button>  
+  <button class="button button--large">BUtton</button>  
+
+
+  <div>
+    Maßeinheiten!
+  </div>
+
+  <ul>
+    <li>
+      Element Außen
+      <ol>
+        <li>
+          Element Innen
+        </li>
+        <li>
+          Element Innen
+        </li>
+        <li>
+          Element Innen
+        </li>
+      </ol>
+    </li>
+  </ul>
+</body>
+</html>
