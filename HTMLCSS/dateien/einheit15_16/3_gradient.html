@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    body {
+      /* background-image: linear-gradient(45deg, #ff3232 0%,#7db9e8 100%); */
+    }
+
+    /* div {
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(45deg, #fff 0%,#000 100%);;
+      background: conic-gradient(#fff, #000);
+    } */
+
+    h1 {
+      font-size: 80px;
+      color: #ff3232;
+      display: inline-block;
+    }
+
+    @supports (-webkit-background-clip: text) {
+      h1 {
+        background-image: linear-gradient(45deg, #ff3232 0%,#7db9e8 100%);
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+      }
+    }
+
+    div {
+      -webkit-border-radius: 50%;
+      -o-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+
+<div class="text">
+  <h1>Heading</h1>
+</div>
+
+<div></div>
+  
+</body>
+</html>

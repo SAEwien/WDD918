@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Selektoren</title>
+
+	<style>
+
+		/* submit, placeholder, zebra, gif, gif alt */
+
+	[placeholder] {
+		border: 10px solid red;
+	}
+
+	[type="submit"] {
+		background: blue;
+	}
+
+	/* input[type="text"][placeholder].test {
+		background: green;
+	} */
+	[type="checkbox"] {
+		-webkit-appearance: none;
+    display: block;
+    width: 40px;
+    height: 40px;
+    background: red;
+	}
+
+	[type="checkbox"]:checked ~	[placeholder] {
+		border-color: blue;
+	}
+
+	/* [title="Zebra"] { */
+	/* [title~="Zebra"] { */
+	/* [title*="Zebra"] { */
+	[title*="Zebra" i] {
+		background-color: #000;
+		color: #fff;
+	}
+
+	[src$=".gif"] {
+		border: 10px solid fuchsia;
+	}
+
+	[src^="gif"] {
+		border: 10px solid aqua;
+	}
+
+	[download] {
+
+	}
+
+	[href^="mailto:"] {
+
+	}
+
+	[href^="http://"],
+	[href^="https://"] {
+		
+	}
+
+	</style>
+</head>
+<body>
+
+	<p>
+		<a href="mailto:manuel@matuzo.at?subject=Das Betreff&body=Das ist der Text">E-Mail</a>
+	</p>
+
+	<form action="#">
+		<input type="checkbox" />
+		Text
+		<input type="text" class="test" placeholder="Text" /><br />
+		Email
+		<input type="email" /><br />
+		<textarea placeholder="Email"></textarea><br />
+		<input type="submit" />
+		<p>bla</p>
+	</form>
+
+	<div title="Eine seltene zebraart">Zebra</div>
+	<div title="Eine seltene Zebraart">Zebra</div>
+	<div title="Ein Zebra ist zu sehen">Zebra</div>
+	<div title="Zebra">Zebra</div>
+
+	<img src="gif.jpg" alt="" />
+	<img src="bild.jpg" alt="" />
+	<br />
+	<img src="bild.gif" />
+	<img src="bild.gif" alt="asdas" title="asdasd"/>
+	
+</body>
+</html>

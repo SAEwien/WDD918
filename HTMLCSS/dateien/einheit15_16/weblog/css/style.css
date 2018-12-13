@@ -1,0 +1,236 @@
+/* 🥛🥛🥛🥛🥛 BASE 🐞🐞🐞🐞🐞 */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: #37505c;
+  font-family: 'Lato', sans-serif;
+  margin: 0 auto;
+  max-width: 768px;
+}
+
+/* Breakpoint erst bei 1115px damit links und rechts noch 20px Platz bleiben */
+@media (min-width: 1115px) {
+  body {
+    max-width: 1075px;
+  }
+}
+
+a:link,
+a:visited {
+  color: #f76f8e;
+}
+
+a:focus,
+a:hover {
+  color: #96616b;
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+p:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+/* 🐉🐉🐉🐉🐉 HEADER 💅💅💅💅💅 */
+
+.site-header {
+  text-align: center;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .site-header {
+    text-align: left;
+    padding: 0 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1075px) {
+  .site-header {
+    flex-direction: column;
+  }
+}
+
+.nav-main {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-main__button {
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .nav-main {
+    position: static;
+    transform: none;
+  }
+
+  .nav-main__items {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 22px;
+  }
+
+  .nav-main__button {
+    display: none;
+  }
+
+  .nav-main__item {
+    margin-left: 25px;
+  }
+}
+
+/* 👾👾👾👾👾👾 CONTENT 👾👾👾👾👾👾 */
+
+@media (min-width: 1115px) {
+  .site-content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .content {
+    flex-shrink: 0;
+    /* Flex-Elemente haben standardmäßig eine min-width: auto. Das erlaubt ihren Kindelementen, dass sie das
+    Elternelement strecken können. Das kann verhindert werden indem man die min-width auf irgendeinen
+    anderen Wert als auto setzt. 
+    Details: https://www.w3.org/TR/css-flexbox-1/#automatic-minimum-size
+    Oder: https://css-tricks.com/another-collection-of-interesting-facts-about-css-grid/#article-header-id-6
+    */
+    min-width: 0;
+  }
+
+  .content--main {
+    flex-basis: 700px;
+  }
+
+  .content--secondary {
+    /* Maximalbreite (1075px) - content main Breite (700px) - margin (50px) = 325px */
+    flex-basis: 325px;
+  }
+}
+
+
+/* 😻😻😻😻😻😻 SLIDER 😻😻😻😻😻😻 */
+
+.slider__inner {
+  position: relative;
+}
+
+.slider__control {
+  width: 30px;
+  height: 40px;
+  background: red;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.slider__control--prev {
+  left: 20px;
+}
+
+.slider__control--next {
+  right: 20px;
+}
+
+.slider__items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  overflow: auto;
+}
+
+.slider__item {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.slider__caption {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+}
+
+.slider__nav {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.slider__nav-item {
+  margin: 0 5px;
+}
+
+.slider__nav-button {
+  background: none;
+  border: 1px solid #f76f8e;
+  border-radius: 50%;
+  padding: 0;
+  height: 17px;
+  width: 17px;
+}
+
+.slider__nav-button--active {
+  background-color: #f76f8e;
+}
+
+/* 🤙🤙🤙🤙🤙 ARTICLE  🤙🤙🤙🤙🤙 */
+
+.article-teaser {
+  display: flex;
+  flex-direction: column;
+}
+
+.article-teaser__image {
+  order: 0;
+}
+
+.article-teaser__tag {
+  order: 1;
+}
+
+.article-teaser__content {
+  order: 2;
+}
+
+.article-teaser__footer {
+  order: 3;
+}
+
+
+/* 🥛🥛🥛🥛🥛 HELPER 🐞🐞🐞🐞🐞 */
+
+.visually-hidden {
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}

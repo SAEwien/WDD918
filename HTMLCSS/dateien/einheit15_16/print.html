@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <link rel="stylesheet" href="print.css" media="print">  
+  
+  <title>Document</title>
+
+  <style>
+    body {
+      font-size: 20px;
+    }
+  
+    @media print {
+      body {
+        font-size: 40px;
+      }
+
+      [href^="http://"]::after {
+        content: " (" attr(href) ")";
+      }
+    }
+
+ 
+
+
+
+  </style>
+</head>
+<body>
+
+  <a href="http://google.com">Lorem</a> ipsum dolor sit amet consectetur adipisicing elit. Rerum numquam tenetur optio quidem aut impedit iste ut perspiciatis ullam ab, amet repellendus, dignissimos voluptatibus quasi. Commodi excepturi voluptas iure perspiciatis?
+  
+</body>
+</html>
