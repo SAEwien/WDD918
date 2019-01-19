@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Der grantige Türsteher</title>
+		<link rel="stylesheet" type="text/css" href="res/make_it_look_nicer.css">
+	</head>
+	<body class="fancy_ON">
+		<div>
+			<div id="tuersteher">Hmmm Wos wülst?!</div>
+			<button onclick="reagiereAufDarfIchRein();">Darf ich rein?</button>
+		</div>
+		<script>
+			//Click Handler - Funktion die oben im HTML als Event-Handler für onlick im button tag verwendet wird
+
+			var count = 0;
+
+			var reagiereAufDarfIchRein = function(){
+				
+				//count++;
+				count = count + 1;
+
+				//Mit hilfe der Methode (Funktionen von Objekten werden Methoden gennant) 
+				//getElementById des Objektes document holen wir uns das DOM-Object welches das div mit der id tuersteher repräsentiert
+				var element = document.getElementById("tuersteher");
+				
+				//Objekte die DOM-Elemente repräsentieren haben eine variable innerHTML mit der wie den Inhalte lesen oder auch überschreiben können
+
+
+				if(count < 4) { //Wenn der Button seit laden der Seite weniger of als 4-mal gedrückt wurde
+					element.innerHTML = "NA! Zum " + count + " mal!";
+				} else { //Wenn 4 mal oder öfter
+					if(count > 7) { //wenn 8 mal oder öfter
+						element.innerHTML = "NA! Zum " + count + " mal!";
+					} else { //wenn weniger oft als 8 
+						element.innerHTML = "&nbsp;";
+					}
+				}
+
+				/* das gleiche wie oben nur als if eleif else statt verschachtelter if-else Conditionals
+				if(count < 4) {
+					element.innerHTML = "NA! Zum " + count + " mal!";
+				} else if(count > 7) {
+					element.innerHTML = "NA! Zum " + count + " mal!";
+				} else {
+					element.innerHTML = "&nbsp;";
+				}*/
+			};
+		</script>
+	</body>
+</html>
