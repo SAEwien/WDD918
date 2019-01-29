@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Hangman</title>
+		<link rel="stylesheet" type="text/css" href="res/hangman.css">
+	</head>
+	<body>
+		<h1>Hangman</h1>
+		<div>
+			<div id="counter" class="state_8">8</div> <!-- 8-0 | won -->
+			<ul id="display"></ul>
+			<ul id="buttons">
+				
+			</ul>
+		</div>
+		<script>
+			window.onload = function(){
+				
+				var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+				var words = ['cat','hello','hotdog','toastbread','array'];
+				//var word = 'Hallo';
+				var word = words[ Math.floor(Math.random() * words.length) ];
+
+				word = word.toUpperCase();
+				console.log(word);
+
+				var guessed_letters = [];
+
+				//Rate Display
+				var update_display = function() {
+					var display = document.querySelector('#display');
+					display.innerHTML = '';
+					var haveWon = true;
+					for(var i = 0; i < word.length; i++) {
+						var li = document.createElement('li');
+						if( guessed_letters.indexOf(word.charAt(i)) === -1 ) {
+							li.textContent = '-';
+							haveWon = false;
+						} else {
+							li.textContent = word.charAt(i);
+						}
+						display.appendChild(li);
+					}
+					var counter_div = document.querySelector('#counter');
+					if(haveWon) {
+						counter_div.setAttribute('class', 'state_won');
+						counter_div.textContent = 'YaY!';
+					} else {
+
+						var count_wrong = 0;
+						for(var i = 0; i < guessed_letters.length; i++) {
+							if(word.indexOf(guessed_letters[i]) === -1) {
+								count_wrong++;
+							}
+						}
+						console.log('WRONT: ' + count_wrong);
+						var remaining = (8 - count_wrong);
+						console.log('REMAINIG: ' + remaining);
+
+						counter_div.setAttribute('class', 'state_' + remaining);
+						counter_div.textContent = remaining;
+					}
+					if(remaining === 0 || haveWon) {
+						document.querySelector('#buttons').innerHTML = '';
+						var li = document.createElement('li');
+						li.textContent = 'Reset';
+						li.addEventListener('click', function(){
+							window.location.reload();
+						});
+						document.querySelector('#buttons').appendChild(li);
+					}
+
+				};
+				update_display();
+
+				//Tastatur
+				for(var i = 0; i < 26; i++) {
+					var li = document.createElement('li');
+					//li.textContent = String.fromCharCode(i + 65);
+					li.textContent = letters.charAt(i);
+					var tastatur = document.querySelector('#buttons');
+					tastatur.appendChild(li);
+					li.addEventListener('click', function(_e){
+						var letter = _e.target.textContent;
+						console.log(letter);
+						guessed_letters.push(letter);
+						console.log(guessed_letters);
+						update_display();
+					});
+				}
+				console.log(i);
+					
+			};
+		</script>
+	</body>
+</html>
