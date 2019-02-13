@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;">
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<div class="jTickerDisplay"></div>
+		<button class="jSpeedup">Schneller</button>
+		<button class="jSpeeddown">Laaaaangsamer</button>
+		<script>
+
+			window.addEventListener('DOMContentLoaded', function(){
+				//Referenzen auf die Button-Elemente
+				var schneller = document.querySelector('.jSpeedup');
+				var langsamer = document.querySelector('.jSpeeddown');
+
+				var speed = 3000; //Variable für die Tickergeschwindigkeit in Milisekunden
+				var runing_interv = null; //Variable für das Interval - Handle
+
+				//Ticker Nachrichten als Array
+				var nachrichten = ["Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro.",
+					"ui animated corpse, cricket bat max brucks terribilem incessu zomby. The vood",
+					"Nescio brains an Undead zombies. Sicut malus putrid voodoo horror. Nigh tofth eliv ingdead.","TEST1123s"
+				];
+				//Zählvariable für die Position im Ticker
+				var i = 0;
+
+				//Funktion die bei Aufruf die nächste Nachricht in das Display div.jTickerDisplay schreibt
+				var cb = function(){
+
+					//display aktualisieren
+					document.querySelector('.jTickerDisplay').textContent = nachrichten[i];
+
+					i++; //index um eins erhöhen damit beim nächsten aufruf von cb() die nächste Nachricht angezeigt wird
+
+					//wenn der index i größer wird als der letzte gültige index des nachrichten arrays
+					//fangen wir wieder von vorne an.
+					if(i > nachrichten.length - 1) {
+						i = 0;
+					}
+					
+					/*
+						Eine einzeilige aber schwerer zu lesende Variante wäre:
+						document.querySelector('.jTickerDisplay').textContent = nachrichten[(i++) % nachrichten.length];
+					*/
+				};
+
+				//Starten des Intervals
+				runing_interv = setInterval(cb, speed);
+				cb(); //die Funktion direkt einmal aufrufen damit sofort etwas passiert
+
+				//Eventlistener um die Geschwindigkeit zu erhöhen
+				schneller.addEventListener('click', function(){
+					speed = speed / 2; //Geschwindigkeit halbieren
+					clearInterval(runing_interv); //das laufende Interval stoppen
+					runing_interv = setInterval(cb, speed); //ein neues Interval in der neuen Geschwindigkeit starten
+				});
+				//Eventlistener um die Geschweidigkeit zu senken
+				langsamer.addEventListener('click', function(){
+					speed = speed * 2; //Geschwindigkeit verdoppeln
+					clearInterval(runing_interv); //das laufende Interval stoppen
+					runing_interv = setInterval(cb, speed);//ein neues Interval in der neuen Geschwindigkeit starten
+				});
+			});
+
+		</script>
+	</body>
+</html>

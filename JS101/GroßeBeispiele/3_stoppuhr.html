@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;">
+		<style type="text/css"></style>
+	</head>
+	<body>
+		<div class="jDisplay">0 Sekunden</div>
+		<button class="jStart">Start</button>
+		<button class="jStop">Stop</button>
+		<script>
+
+			window.addEventListener('DOMContentLoaded', function(){
+
+				/***********************************************
+				*
+				*	Simpel Stopuhr 
+				*	Akualisierung der Ausgabe mit Hilfe von setInterval
+				*	Zeitmessung mit Date()
+				*
+				***/
+
+				//Referenzeb auf die Buttons
+				var start_btn = document.querySelector('.jStart');
+				var stop_btn = document.querySelector('.jStop');
+
+				var interv; //Variable zum speichern das Interval - Handles 
+				var time; //Variable zum speichern des Startzeitpunktes
+
+				//Eventhandler für den Startbutton
+				start_btn.addEventListener('click', function(){
+					time = (new Date()).getTime(); //die Aktuelle Zeit in form eines Timestampts (Milisekunden seit 1.1.1970)
+					//Interval dass alle 10 Milisekunden die Ausgabe im div.jDisplay akutalisiert 
+					interv = setInterval(function(){
+						//Aktuellen Timestamp zum Zeitpunkt der Aktualisierung
+						var cur_time = (new Date()).getTime();
+						//Inhalt des Displays Update
+						//Diffrenez zwischen Starttimestamp und aktuellem Timestamp entspricht der vergangenen Zeit
+						document.querySelector('.jDisplay').textContent = 
+							((cur_time - time)/1000).toFixed(2) + ' Sekunden';
+					}, 10);
+				});
+
+				//Eventhandler für den Stop Button
+				stop_btn.addEventListener('click', function(){
+					//Interval abbrechen dadurch wird die Anzeige nicht mehr aktualisiert.
+					clearInterval(interv);
+				});
+			});
+
+		</script>
+	</body>
+</html>
