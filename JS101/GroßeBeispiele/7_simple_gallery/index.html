@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Your Website</title>
+		<style>
+			.gallery {
+				background-color: #000;
+				width: 404px;
+				box-sizing: border-box;
+				border: 1px solid #000;
+			}
+			.gallery_list {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				width: 400px;
+				display: flex;
+			}
+			.gallery_list li {
+				opacity: 0.5;
+				cursor: pointer;
+			}
+			.gallery_list li:hover {
+				opacity: 1;
+			}
+			.gallery_stage {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 400px;
+				height: 400px;
+			}
+			.gallery_stage img {
+				max-width: 90%;
+				max-height: 90%;
+			}
+			.gallery_list img {
+				width: 100%;
+				height: auto;
+				box-sizing: border-box;
+			}
+			body {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="gallery">
+			<div class="gallery_stage">
+				<img src="1.jpg">
+			</div>
+			<ul class="gallery_list">
+				<li>
+					<img src="1_tn.jpg">
+				</li>
+				<li>
+					<img src="2_tn.jpg">
+				</li>
+				<li>
+					<img src="3_tn.jpg">
+				</li>
+				<li>
+					<img src="4_tn.jpg">
+				</li>
+				<li>
+					<img src="5_tn.jpg">
+				</li>
+				<li>
+					<img src="6_tn.jpg">
+				</li>
+			</ul>
+		</div>
+		<input type="checkbox" id="onHover"> <label for="onHover">switch on hover</label>
+	</body>
+	<script>
+		window.addEventListener('DOMContentLoaded', function(){
+			
+		});
+	</script>
+</html>
