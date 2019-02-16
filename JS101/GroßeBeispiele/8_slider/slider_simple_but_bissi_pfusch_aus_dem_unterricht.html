@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<style>
+			body {
+				font-family: Helvetica, Verdana, Arial, sans-serif;
+			}
+			.slide_box {
+				border: 1px solid #ccc;
+				overflow: hidden;
+				margin: 0 auto;
+				position: relative;
+				width: 400px;
+			}
+			ul {
+				height: 100%;
+				overflow: hidden;
+				margin: 0;
+				padding: 0;
+			}
+			.prev {
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				top: calc(50% - 15px);
+				left: 4px;
+				background-color: #ccc;
+				line-height: 30px;
+				text-align: center;
+				border-radius: 3px;
+				cursor: pointer;
+				z-index: 2;
+			}
+			.next {
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				top: calc(50% - 15px);
+				right: 4px;
+				background-color: #ccc;
+				line-height: 30px;
+				text-align: center;
+				border-radius: 3px;
+				cursor: pointer;
+				z-index: 2;
+			}
+			.slide_list {
+				position: relative;
+				display: flex;
+				white-space: nowrap;
+				height: 100%;
+				left: 0;
+				transition: left .5s ease-in-out;
+			}
+			.page {
+				float: left;
+				width: 100%;
+				height: 300px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: white;
+				font-size: 24px;
+				/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffaf4b+0,ff920a+100;Orange+3D+%231 */
+background: rgb(255,175,75); /* Old browsers */
+background: -moz-linear-gradient(left, rgba(255,175,75,1) 0%, rgba(255,146,10,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, rgba(255,175,75,1) 0%,rgba(255,146,10,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, rgba(255,175,75,1) 0%,rgba(255,146,10,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', endColorstr='#ff920a',GradientType=1 ); /* IE6-9 */
+			}
+			.radios {
+				padding: 12px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="slide_box">
+			<div class="prev j-prev">&lt;</div>
+			<ul class="slide_list j-slide_list" style="left: 0%">
+				<li class="page">PAGE 1</li>
+				<li class="page">PAGE 2</li>
+				<li class="page">PAGE 3</li>
+				<li class="page">PAGE 4</li>
+				<li class="page">PAGE 5</li>
+			</ul>
+			<div class="next j-next">&gt;</div>
+		</div>
+		<script>
+			//Wenn alles fertig geladen ist
+			window.addEventListener('load', function(){
+				var list = document.querySelector('.j-slide_list');
+
+
+				var slides_n = document.querySelectorAll('.j-slide_list > li').length;
+				console.log(slides_n);
+				list.style.width = (slides_n * 100) + '%';
+
+				var next = function(){
+					var left = list.style.left;
+					left = (parseInt(left) - 100);
+					if(left >= ((slides_n - 1) * -100)) {
+						left = left + '%';
+						console.log(left);
+						list.style.left = left;
+					} else {
+						list.style.left = 0;
+					}
+				};
+
+				document.querySelector('.j-next').addEventListener('click', next);
+
+				document.querySelector('.j-prev').addEventListener('click', function(){
+					var left = list.style.left;
+					left = (parseInt(left) + 100);
+					if(left <= 0) {
+						left = left + '%';
+						console.log(left);
+						list.style.left = left;
+					} else {
+						list.style.left = ((slides_n - 1) * -100) + '%';
+					}
+				});
+
+				//setInterval(next, 1000);
+
+			});
+		</script>
+	</body>
+</html>
