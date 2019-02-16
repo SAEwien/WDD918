@@ -73,11 +73,47 @@
 				</li>
 			</ul>
 		</div>
-		<input type="checkbox" id="onHover"> <label for="onHover">switch on hover</label>
+		<input type="checkbox" id="onHover" checked> <label for="onHover">switch on hover</label>
 	</body>
 	<script>
 		window.addEventListener('DOMContentLoaded', function(){
 			
+			var tns = document.querySelectorAll('.gallery_list > li img');
+			console.log(tns);
+			var stage_img = document.querySelector('.gallery_stage img');
+
+			var change_image = function(e){
+				var src = e.target.getAttribute('src');
+				src = src.replace('_tn.','.');
+				console.log(src);
+				stage_img.setAttribute('src', src);
+			};
+
+			for(var i = 0; i < tns.length; i++) {
+				tns[i].addEventListener('click', change_image);
+				tns[i].addEventListener('mouseenter', function(e){
+					if(document.querySelector('#onHover').checked) {
+						change_image(e);
+					}
+				});
+			}
+
 		});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	</script>
 </html>
