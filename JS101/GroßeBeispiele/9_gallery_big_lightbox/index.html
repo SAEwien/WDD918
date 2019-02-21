@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Your Website</title>
+		<style>
+			body {
+				font-family: Helvetica, Verdana, Arial, sans-serif;
+			}
+				article {
+					box-sizing: border-box;
+					padding: 24px;
+					max-width: 800px;
+					margin: 0 auto;
+				}
+					h1 {
+						font-family: "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif;
+						font-weight: 200;
+						letter-spacing: 0.1em;
+						text-transform: uppercase;
+						font-variant: small-caps;
+					}
+					p {
+						font-size: 13px;
+						line-height: 1.7em;
+						text-align: justify;
+					}
+					.tn_list {
+						list-style: none;
+						display: flex;
+						flex-wrap: wrap;
+						width: 100%;
+						padding: 0;
+						margin: 0;
+						box-sizing: border-box;
+					}
+						.tn_list > li {
+							box-sizing: border-box;
+							padding: 0 12px 12px 0;
+						}
+							.tn_list > li:first-child {
+								padding-left: 0;
+							}
+							.tn_list > li:last-child {
+								padding-right: 0;
+							}
+							.tn_list > li img {
+								height: 70px;
+							}
+				
+				
+				
+				.overlay__cnt {
+					position: fixed;
+					width: 100vw;
+					height: 100vh;
+					top: 0;
+					left: 0;
+					display: flex;
+					background-color: rgba(0,0,0,0.6);
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					color: white;
+				}
+					.overlay__close_on_black {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						z-index: -1;
+					}
+					.overlay__close {
+						position: absolute;
+						top: 8px;
+						right: 8px;
+						width: 40px;
+						height: 40px;
+						line-height: 40px;
+						text-align: center;
+						font-size: 30px;
+						cursor: pointer;
+					}
+						.overlay__close:hover {
+							background-color: #ccc;
+						}
+					.overlay__stage {
+						width: 100%;
+						height: calc(100% - 60px);
+						box-sizing: border-box;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						pointer-events: none;
+					}
+					.overlay__stage img {
+						max-width: 90%;
+						max-height: 90%;
+						box-shadow: 0px 0px 24px rgba(0,0,0,0.5);
+						pointer-events: all;
+					}
+					.overlay__nav {
+						display: flex;
+						flex-direction: row;
+						height: 40px;
+						width: 100%;
+						justify-content: center;
+					}
+						.overlay__nav .tn_list {
+							padding: 0 12px;
+							height: 40px;
+						}
+							.overlay__nav .tn_list img {
+								box-shadow: 0px 0px 2px rgba(0,0,0,0.5);
+								height: 40px;
+							}
+								.overlay__nav .tn_list img:hover {
+									box-shadow: 0px 0px 6px rgba(0,0,0,0.3);
+									outline: 1px solid #aaa;
+								}
+								.overlay__nav li.selected img {
+									outline: 1px solid white;
+								}
+						.overlay__prev, .overlay__next {
+							height: 100%;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							text-align: center;
+							font-size: 24px;
+							cursor: pointer;
+						}
+							.overlay__prev:hover, .overlay__next:hover {
+								font-weight: bold;
+							}
+			
+		</style>
+	</head>
+	<body>
+		<div class="overlay__cnt" style="display: none;">
+			<div class="overlay__close">X</div>
+			<div class="overlay__stage">
+				<img src="img/1.jpg">
+			</div>
+			<div class="overlay__nav">
+				<div class="overlay__prev">&lt;</div>
+				<div class="overlay__tns">
+					<ul class="tn_list">
+						<li>
+							<a href="img/1.jpg" title="">
+								<img src="img/1_tn.jpg">
+							</a>
+						</li>
+						<li>
+							<a href="img/2.jpg" title="">
+								<img src="img/2_tn.jpg">
+							</a>
+						</li>
+						<li>
+							<a href="img/3.jpg" title="">
+								<img src="img/3_tn.jpg">
+							</a>
+						</li>
+						<li>
+							<a href="img/4.jpg" title="">
+								<img src="img/4_tn.jpg">
+							</a>
+						</li>
+						<li>
+							<a href="img/5.jpg" title="">
+								<img src="img/5_tn.jpg">
+							</a>
+						</li>
+						<li>
+							<a href="img/6.jpg" title="">
+								<img src="img/6_tn.jpg">
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="overlay__next">&gt;</div>
+			</div>
+			<div class="overlay__close_on_black"></div>
+		</div>
+		
+		<article>
+			<h1>Title of Page</h1>
+			<p>Cupcake donut jelly beans caramels lollipop cake croissant. Sweet ice cream icing carrot cake lemon drops chocolate cake tiramisu carrot cake. Candy danish fruitcake. Jelly caramels chocolate bar cake sesame snaps jelly-o bear claw. Cake cupcake gummies cheesecake sugar plum sesame snaps icing chupa chups. Candy canes cupcake brownie wafer powder brownie gingerbread soufflé sweet.  Powder powder croissant tootsie roll danish.</p>
+			<p>Toffee soufflé apple pie tootsie roll brownie. Chocolate bar fruitcake donut lemon drops biscuit tootsie roll gummies caramels. Bonbon cupcake dragée cake apple pie marzipan. Marshmallow cake icing. Tart tiramisu sesame snaps fruitcake pie carrot cake pie. Chocolate sesame snaps dessert topping. Oat cake bonbon danish sugar plum.</p>
+			
+			<ul class="tn_list">
+				<li>
+					<a href="img/a.jpg" title="">
+						<img src="img/a_tn.jpg">
+					</a>
+				</li>
+				<li>
+					<a href="img/b.jpg" title="">
+						<img src="img/b_tn.jpg">
+					</a>
+				</li>
+				<li>
+					<a href="img/c.jpg" title="">
+						<img src="img/c_tn.jpg">
+					</a>
+				</li>
+				<li>
+					<a href="img/d.jpg" title="">
+						<img src="img/d_tn.jpg">
+					</a>
+				</li>
+				<li>
+					<a href="img/e.jpg" title="">
+						<img src="img/e_tn.jpg">
+					</a>
+				</li>
+				<li>
+					<a href="img/f.jpg" title="">
+						<img src="img/f_tn.jpg">
+					</a>
+				</li>
+			</ul>
+			
+			<p>Brownie liquorice pie jelly beans soufflé. Halvah gummies cotton candy. Cake jelly tootsie roll gummies icing lemon drops carrot cake jelly. Jelly biscuit jelly candy canes pie. Chupa chups bear claw toffee halvah sweet roll cake topping. Pie jelly beans lemon drops icing. Croissant muffin soufflé sesame snaps pie.</p>
+			<p>Brownie liquorice pie jelly beans soufflé. Halvah gummies cotton candy. Cake jelly tootsie roll gummies icing lemon drops carrot cake jelly. Jelly biscuit jelly candy canes pie. Chupa chups bear claw toffee halvah sweet roll cake topping. Pie jelly beans lemon drops icing. Croissant muffin soufflé sesame snaps pie.</p>
+			<ul class="tn_list">
+				<li>
+					<a href="img/1.jpg" title="">
+						<img src="img/1_tn.jpg">
+					</a>
+				</li>
+				<li>
+					<a href="img/2.jpg" title="">
+						<img src="img/2_tn.jpg">
+					</a>
+				</li>
+				<li>
+					<a href="img/3.jpg" title="">
+						<img src="img/3_tn.jpg">
+					</a>
+				</li>
+				<li>
+					<a href="img/4.jpg" title="">
+						<img src="img/4_tn.jpg">
+					</a>
+				</li>
+				<li>
+					<a href="img/5.jpg" title="">
+						<img src="img/5_tn.jpg">
+					</a>
+				</li>
+				<li>
+					<a href="img/6.jpg" title="">
+						<img src="img/6_tn.jpg">
+					</a>
+				</li>
+			</ul>
+			<p>Brownie liquorice pie jelly beans soufflé. Halvah gummies cotton candy. Cake jelly tootsie roll gummies icing lemon drops carrot cake jelly. Jelly biscuit jelly candy canes pie. Chupa chups bear claw toffee halvah sweet roll cake topping. Pie jelly beans lemon drops icing. Croissant muffin soufflé sesame snaps pie.</p>
+		</article>
+	</body>
+	<script>
+		window.addEventListener('DOMContentLoaded', function(){
+
+		});
+	</script>
+</html>
