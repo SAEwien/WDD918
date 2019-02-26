@@ -48,7 +48,7 @@
 			.slide_list {
 				position: relative;
 				display: flex;
-				white-space: nowrap;
+				/*white-space: nowrap;*/
 				height: 100%;
 				left: 0;
 			}
@@ -75,27 +75,93 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', end
 				padding: 12px;
 				text-align: center;
 			}
+
+			.dots {
+				display: flex;
+				list-style: none;
+				justify-content: center;
+				font-size: 24px;
+			}
 		</style>
 	</head>
 	<body>
-		<div class="slide_box">
+		<div class="slide_box j-slide_box">
 			<div class="prev j-prev">&lt;</div>
 			<ul class="slide_list j-slide_list">
 				<li class="page">PAGE 1</li>
 				<li class="page">PAGE 2</li>
 				<li class="page">PAGE 3</li>
 				<li class="page">PAGE 4</li>
+				<li class="page">PAGE 5</li>
 			</ul>
 			<div class="next j-next">&gt;</div>
 		</div>
+		<ul class="j-dots dots"></ul>
 		<div class="radios">
 			<input type="radio" id="autoplay_left" name="auto" class="j-autoplay-left" value="left"><label for="autoplay_left">Auto Play Left</label>
 			<input type="radio" id="autoplay_off" class="j-autoplay-off" name="auto" checked> <label for="autplay_off">Off</label>
 			<input type="radio" id="autoplay_right" class="j-autoplay-right" name="auto" value="right"><label for="autoplay_right">Auto Play Right</label>
 		</div>
 		<script>
-			window.addEventListener('load', function(){
+			window.addEventListener('DOMContentLoaded', function(){
+				var slide_box = document.querySelector('.j-slide_box');
+				var slide_list = document.querySelector('.j-slide_list');
+				var n = document.querySelectorAll('.j-slide_list > *').length;
 
+				//HTML/CSS State: [12345]
+
+				slide_box.style.overflow = 'hidden';
+				slide_list.style.width = (n * 100) + '%';
+				//State nach Inline Styles: [1]2345
+ 
+				//Unser Inital State: 
+				//Das letzte Slide vor das erste umhängen 
+				slide_list.prepend(document.querySelector('.j-slide_list > *:last-child')); //[5]1234
+				//Das erste Slide befindet sich an 2. stelle im der Liste daher ist unse Ausgangszustand jetzt -100%
+				slide_list.style.left = '-100%'; //5[1]234
+
+				//cleanup after Animation (Unseren Inital State wieder herstellen)
+				slide_list.addEventListener('transitionend', function(){
+					slide_list.classList.remove('slide_list--transition-on'); //Animation ausschalten
+					var position = parseInt(slide_list.style.left);
+					if(position < -100) {
+						//after next
+						console.log('AFTER NEXT ANIMATION');
+						slide_list.appendChild(document.querySelector('.j-slide_list > *:first-child'));
+					} else {
+						//after prev
+						console.log('AFTER PREV ANIMATION');
+						slide_list.prepend(document.querySelector('.j-slide_list > *:last-child'));
+					}
+					slide_list.style.left = '-100%';
+				});
+
+				//move Slider defaultbehavior: next 
+				var animate_slide = function(_direction){
+					slide_list.classList.add('slide_list--transition-on'); //Animation einschalten
+					if(_direction === "prev"){
+						slide_list.style.left = '0%';
+					} else {
+						slide_list.style.left = '-200%';
+					}
+				}
+				
+				//Arrow Buttons
+				document.querySelector('.j-next').addEventListener('click', animate_slide);
+				document.querySelector('.j-prev').addEventListener('click', function(){
+					animate_slide('prev');
+				});
+
+				//Checkboxen
+				var cb_right = document.querySelector('.j-autoplay-right');
+				var cb_left = document.querySelector('.j-autoplay-left');
+				setInterval(function(){
+					if(cb_right.checked) {
+						animate_slide();
+					} else if(cb_left.checked) {
+						animate_slide('prev');
+					}
+				}, 2000);
 			});
 		</script>
 	</body>

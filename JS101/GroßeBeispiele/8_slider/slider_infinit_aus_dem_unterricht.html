@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<style>
+			body {
+				font-family: Helvetica, Verdana, Arial, sans-serif;
+			}
+			.slide_box {
+				border: 1px solid #ccc;
+				overflow: hidden;
+				margin: 0 auto;
+				position: relative;
+			}
+			ul {
+				height: 100%;
+				overflow: hidden;
+				margin: 0;
+				padding: 0;
+			}
+			.prev {
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				top: calc(50% - 15px);
+				left: 4px;
+				background-color: #ccc;
+				line-height: 30px;
+				text-align: center;
+				border-radius: 3px;
+				cursor: pointer;
+				z-index: 2;
+			}
+			.next {
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				top: calc(50% - 15px);
+				right: 4px;
+				background-color: #ccc;
+				line-height: 30px;
+				text-align: center;
+				border-radius: 3px;
+				cursor: pointer;
+				z-index: 2;
+			}
+			.slide_list {
+				position: relative;
+				display: flex;
+				/*white-space: nowrap;*/
+				height: 100%;
+				left: 0;
+			}
+			.slide_list--transition-on {
+				transition: left .5s ease-in-out;
+			}
+			.page {
+				float: left;
+				flex-grow: 1;
+				height: 300px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: white;
+				font-size: 24px;
+				/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffaf4b+0,ff920a+100;Orange+3D+%231 */
+background: rgb(255,175,75); /* Old browsers */
+background: -moz-linear-gradient(left, rgba(255,175,75,1) 0%, rgba(255,146,10,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, rgba(255,175,75,1) 0%,rgba(255,146,10,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, rgba(255,175,75,1) 0%,rgba(255,146,10,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', endColorstr='#ff920a',GradientType=1 ); /* IE6-9 */
+			}
+			.radios {
+				padding: 12px;
+				text-align: center;
+			}
+
+			.dots {
+				display: flex;
+				list-style: none;
+				justify-content: center;
+				font-size: 24px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="slide_box">
+			<div class="prev j-prev">&lt;</div>
+			<ul class="slide_list j-slide_list">
+				<li class="page">PAGE 1</li>
+				<li class="page">PAGE 2</li>
+				<li class="page">PAGE 3</li>
+				<li class="page">PAGE 4</li>
+				<li class="page">PAGE 5</li>
+			</ul>
+			<div class="next j-next">&gt;</div>
+		</div>
+		<ul class="j-dots dots"></ul>
+		<div class="radios">
+			<input type="radio" id="autoplay_left" name="auto" class="j-autoplay-left" value="left"><label for="autoplay_left">Auto Play Left</label>
+			<input type="radio" id="autoplay_off" class="j-autoplay-off" name="auto" checked> <label for="autplay_off">Off</label>
+			<input type="radio" id="autoplay_right" class="j-autoplay-right" name="auto" value="right"><label for="autoplay_right">Auto Play Right</label>
+		</div>
+		<script>
+			window.addEventListener('load', function(){
+				var slide_list = document.querySelector('.j-slide_list');
+				var lis = document.querySelectorAll('.j-slide_list > li');
+				console.log(lis);
+				var n = lis.length;
+				console.log(n);
+				slide_list.style.width = n * 100 + '%';
+
+				var dost_list = document.querySelector('.j-dots');
+				var dots = [];
+				for(var i = 0; i < n; i++) {
+					var li = document.createElement('li');
+					li.textContent = 'o';
+					dost_list.appendChild(li);
+					lis[i].setAttribute('data-idx', i);
+					dots.push(li);
+				}
+				dots[0].textContent = 'X';
+
+				var updatex = function() {
+					var cur_index = parseInt(document.querySelector('.j-slide_list > li').getAttribute('data-idx'));
+					for(var i = 0; i < dots.length; i++) {
+
+						if(i === cur_index) {
+							dots[i].textContent = 'X';
+						} else {
+							dots[i].textContent = 'o';
+						}
+					}
+				};
+
+
+				var next_cb = function(){
+					console.log('PUSH FIRST TO END');
+					slide_list.removeEventListener('transitionend', next_cb);
+					slide_list.classList.remove('slide_list--transition-on');
+					slide_list.style.left = 0;
+					var first = document.querySelector('.j-slide_list > li');
+					slide_list.appendChild(first);
+					updatex();
+				};
+				var next = function(){
+					slide_list.classList.add('slide_list--transition-on');
+					slide_list.style.left = '-100%';
+					slide_list.addEventListener('transitionend', next_cb);
+				};
+
+				document.querySelector('.j-next').addEventListener('click', next);
+
+
+				var prev = function(){
+					window.requestAnimationFrame(function(){
+						slide_list.classList.remove('slide_list--transition-on');
+						slide_list.style.left = '-100%';
+						var last = document.querySelector('.j-slide_list > li:last-child');
+						slide_list.prepend(last);
+						window.requestAnimationFrame(function(){
+							slide_list.classList.add('slide_list--transition-on');
+							slide_list.style.left = 0;
+							updatex();
+						});
+					});
+				};
+				document.querySelector('.j-prev').addEventListener('click', prev);
+
+
+				setInterval(function(){
+					if(document.querySelector('.j-autoplay-right').checked) {
+						next();
+					} else if (document.querySelector('.j-autoplay-left').checked) {
+						prev();
+					}
+				}, 2000);
+
+
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title></title>
+		<style>
+			body {
+				font-family: Helvetica, Verdana, Arial, sans-serif;
+			}
+			.slide_box {
+				border: 1px solid #ccc;
+				overflow: hidden;
+				margin: 0 auto;
+				position: relative;
+			}
+			ul {
+				height: 100%;
+				overflow: hidden;
+				margin: 0;
+				padding: 0;
+			}
+			.prev {
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				top: calc(50% - 15px);
+				left: 4px;
+				background-color: #ccc;
+				line-height: 30px;
+				text-align: center;
+				border-radius: 3px;
+				cursor: pointer;
+				z-index: 2;
+			}
+			.next {
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				top: calc(50% - 15px);
+				right: 4px;
+				background-color: #ccc;
+				line-height: 30px;
+				text-align: center;
+				border-radius: 3px;
+				cursor: pointer;
+				z-index: 2;
+			}
+			.slide_list {
+				position: relative;
+				display: flex;
+				white-space: nowrap;
+				height: 100%;
+				left: 0;
+			}
+			.slide_list--transition-on {
+				transition: left .5s ease-in-out;
+			}
+			.page {
+				float: left;
+				flex-grow: 1;
+				height: 300px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: white;
+				font-size: 24px;
+				/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffaf4b+0,ff920a+100;Orange+3D+%231 */
+background: rgb(255,175,75); /* Old browsers */
+background: -moz-linear-gradient(left, rgba(255,175,75,1) 0%, rgba(255,146,10,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, rgba(255,175,75,1) 0%,rgba(255,146,10,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, rgba(255,175,75,1) 0%,rgba(255,146,10,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', endColorstr='#ff920a',GradientType=1 ); /* IE6-9 */
+			}
+			.radios {
+				padding: 12px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="slide_box">
+			<div class="prev j-prev">&lt;</div>
+			<ul class="slide_list j-slide_list">
+				<li class="page">PAGE 1</li>
+				<li class="page">PAGE 2</li>
+				<li class="page">PAGE 3</li>
+				<li class="page">PAGE 4</li>
+			</ul>
+			<div class="next j-next">&gt;</div>
+		</div>
+		<div class="radios">
+			<input type="radio" id="autoplay_left" name="auto" class="j-autoplay-left" value="left"><label for="autoplay_left">Auto Play Left</label>
+			<input type="radio" id="autoplay_off" class="j-autoplay-off" name="auto" checked> <label for="autplay_off">Off</label>
+			<input type="radio" id="autoplay_right" class="j-autoplay-right" name="auto" value="right"><label for="autoplay_right">Auto Play Right</label>
+		</div>
+		<script>
+			window.addEventListener('load', function(){
+
+
+				//anzahl der slides in variable n speichern 
+				//-> benötigen wir um die width der ul setzen zu können
+				var n = document.querySelectorAll('.j-slide_list > li').length;
+				
+				//slide list -> ul = das element das wir animiert hin und her schieben 
+				var slide_list = document.querySelector('.j-slide_list');
+
+				//die breite des ul auf n * 100% setzen.
+				//jetzt sollte ein slide die gesamte breite der stage .slide_box einnehmen
+				slide_list.style.width = (n * 100)+"%";
+
+
+				//funktion um zum nächsten slide zu wechseln
+				var next_slide = function(){
+
+					//dem ul die klasse hinzufügen in der das transition left css atribut gesetzte wird
+					//wenn wir den left wert von dem ul jetzt ändern wird dies animiert
+					slide_list.classList.add('slide_list--transition-on');
+
+					//funktion die aufgerufen werden woll wenn die animation vorbei ist
+					var after_transition = function(){
+						//nachdem die animation abgeflaufen ist wollen wir jetzt wieder die 
+						//gleiche situation wir am anfang herstellen damit wir für das nächste
+						//slide bei next wieder genau das selbe machen können
+						//also erstes entfernen wir die klasse mit der transition wieder damit die änderungen die wir jetzt machen nicht mehr animiert werden
+						slide_list.classList.remove('slide_list--transition-on');
+						//wir setzen left wieder zurück auf 0
+						slide_list.style.left = "0";
+						//dafür müssen wir jetzt aber das 1. slide nach hinten umhängen!
+						//damit trotzdem wieder das 2. slide das sichtbare ist
+						//dafür entfernen wir das erste slide aus dem ul und speichern es in cur_first_slide
+						//(statt.: slide_list.children[0] könnte man auch slide_list.querySelector('li:first-child') schreiben)
+						var cur_first_slide = slide_list.removeChild(slide_list.children[0]);
+						//danach hägen wir es hinten an das ul an
+						slide_list.appendChild(cur_first_slide);
+						//als letztes müssen wir den transitionend eventhandler wieder entfernen weil der ja bei jedem next_silde() neu gebunden wird!
+						//sonst würde die funktion mehrfach aufgerufen!
+						slide_list.removeEventListener('transitionend', after_transition);
+					};
+					//eventlistener hinzufügen der aufgerufen wird wenn die animation vorbei ist
+					slide_list.addEventListener('transitionend', after_transition);
+					//ul um ein slide nach links schieben so dass da nächste slide sichtbar wird
+					slide_list.style.left = "-100%";
+					
+				};
+				//wenn der next pfeil geklickt wird die next_slide() funktion aufrufen
+				document.querySelector('.j-next').addEventListener('click', next_slide);		
+				//funktion um im slider nach links "zurück" zu gehen
+				var prev_slide = function(){
+
+					//hier erfolgen die selben schritte nur in umgekehrter reihenfolge
+					//also erst umhängen (letztes nach vorne) und dann animieren/verschieben
+
+					//das letzte slide aus dem ul entfernen und in die variable cur_last_slide speichern (statt.: slide_list.children[slide_list.children.length - 1] könnte man auch slide_list.querySelector('li:last-child') schreiben)
+					var cur_last_slide = slide_list.removeChild( slide_list.children[slide_list.children.length - 1] );
+					//das slide vor dem ersten ins ul einhängen
+					slide_list.prepend(cur_last_slide);
+					//sicherheitshalber die transition klasse entfernen (dürfte eigentlich eh nicht gesetzt sein)
+					slide_list.classList.remove('slide_list--transition-on');
+					//den ul container um ein slide nach links positionieren 
+					slide_list.style.left = "-100%";
+
+					//warten bis mindestens ein frame gerendert wird in dem das left attribut den wert -100% hat
+					setTimeout(function(){
+						
+						//transitionklasse hinzufügen damit die nächste left änderung animiert wird
+						slide_list.classList.add('slide_list--transition-on');
+						//left auf 0 setzen damit das slide herein animiert wird
+						slide_list.style.left = "0";
+						
+						/*
+						Nach der Transition könnten wir die Transition-Klasse wieder entfernen. Das wäre sauberer aber nicht wirklich nochtwendig wenn wir bei next und prev am anfang der funktion sicher stellen dass die klasse da oder eben nicht da ist bevor wir left manipulieren
+						var after_transition = function(){
+							slide_list.classList.remove('slide_list--transition-on');
+							slide_list.removeEventListener('transitionend', after_transition);
+						};
+						slide_list.addEventListener('transitionend', after_transition);*/
+
+					}, 100);
+
+				};
+				//prev Pfeil mit der funktion bei click verknüpfen
+				document.querySelector('.j-prev').addEventListener('click', prev_slide);
+
+
+				//Autoplay Stuff:
+				
+				//Variable für das interval 
+				var slide_interval;
+				//wenn sich der zustand des radiobuttons right ändert
+				document.querySelector('.j-autoplay-right').addEventListener('change', function(_e){
+					//wir beenden das interval das gerade läuft
+					clearInterval(slide_interval);
+					//wir rufen next gleich einmal auf dass sofort etwas passiert
+					next_slide();
+					//wir starten ein neues interval das alle 3 sekunden next_slide aufruft
+					//und speichern das handle in die Variable slide_interval
+					slide_interval = setInterval(next_slide, 3000);
+				});
+
+				//wenn sich der zustand des radiobuttons left ändert
+				document.querySelector('.j-autoplay-left').addEventListener('change', function(_e){
+					//wir beenden das interval das gerade läuft
+					clearInterval(slide_interval);
+					//wir rufen prev gleich einmal auf dass sofort etwas passiert
+					prev_slide();
+					//wir starten ein neues interval das alle 3 sekunden prev_slide aufruft
+					//und speichern das handle in die Variable slide_interval
+					slide_interval = setInterval(prev_slide, 3000);
+				});
+				
+				//wenn sich der zustand des radiobuttons off ändert
+				document.querySelector('.j-autoplay-off').addEventListener('change', function(_e){
+					//stoppen wir das interval das gerade läuft
+					clearInterval(slide_interval);
+				});
+
+			});
+		</script>
+	</body>
+</html>
