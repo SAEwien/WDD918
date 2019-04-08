@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<style type="text/css">
+			.error {
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="http://sae.srv.co.at/JS101/form_target.php" method="POST" class="jform">
+			Name: <input type="text" class="jName" name="name"><br>
+			Tel: <input type="text" class="jTel" name="tel"><br>
+			Email: <input type="text" class="jEmail" name="email"><br>
+			<input type="submit" value="Abschicken" class="jBtn">
+		</form>
+		<script>
+			//Warten bis der DOM-Baum fertig geladen ist
+			window.addEventListener('DOMContentLoaded', function(){
+				//eine Referenz auf das Formular
+				var form = document.querySelector('.jform');
+
+				//Funktion die Überprüft ob in einem String mehr als nur Whitespace Zeichen drin steht
+				var isEmpty = function(str) {
+					//str der zu überprüfende String
+					//str.trim() alle Whitespace Zeichen vorne und hinten entfernen
+					//str.trim().length  länge des verbleibenden strings
+					//str.trim().length > 0    
+					//	true:str beinhaltet mehr als whitespace
+					//	flase:str beinhaltet nur whitespace oder ist leer
+					//!(str.trim().length > 0)
+					//	false:str beinhaltet mehr als whitespace
+					//	true:str beinhaltet nur whitespace oder ist leer
+					return !(str.trim().length > 0);
+				};
+				var isEmptyRegex = function(str) {
+					// ^ vom begin weg überprüfen
+					// \s ein beliebiges Whitespace Zeichen
+					// * kein mal oder beliebig oft
+					// $ bis zum ende hin überprüfen 
+					return /^\s*$/.test(str);
+				}
+
+				//überprüft ob ein String eine Telefonnummer ist
+				var isValidTel = function(tel){
+					//Erlaubete Zeichen an beliebiger Stelle
+					var erlaubt = '0123456789';
+					//Zeichen die wir als Whitespace behandeln möchten
+					var whitespace = ' -/';
+					//Variable zum zwischenspeichern der tel ohne der Whitespace zeichen
+					var telClean = "";
+					//alle Zeichen der aus dem str tel die keine "Whitespace" Zeichen sind in den String telClean speichern.
+					for(var i = 0; i < tel.length; i++) {
+						//wenn das i-te zeichen aus tel keines der Whitespace zeichen ist
+						if(whitespace.indexOf(tel.charAt(i)) === -1) {
+							telClean += tel.charAt(i); //übernehmen wir es in den telClean String
+	 					}
+					}
+					if(telClean.length === 0) return false; //leere telefonnummer nicht erlaubt
+					//alle verbleibenden Zeichen einzeln durchgehen
+					for(var i = 0; i < telClean.length; i++) {
+						//nur an der stelle 0 ist ein plus erlaubt: (i !== 0 && telClean.charAt(i) === '+')
+						//wenn wir ein nicht erlaubtes zeichen finden haben wir ein problem (erlaubt.indexOf(telClean.charAt(i)) === -1)
+						if(erlaubt.indexOf(telClean.charAt(i)) === -1) {
+							//das i-te zeichen kommt nicht in der erlaubten zeichen vor
+							if(i !== 0) { 
+								return false; //ERROR ein nicht erlaubtes Zeichen gefunden das nicht an erste stelle steht
+							} else if (telClean.charAt(i) !== '+') {
+								return false; //ERROR ein nicht erlaubtes Zeichen gefunden das an erster stelle steht (an der wir auch + erlauben würden)
+							}
+						}
+					}
+					//Hier kommt man nur her wenn in der Schleife oben kein ungültiges Zeichen gefunden wurde
+					//Statt true geben wir die bereinigte Tel zurück. So können wir den Inhalt des Formularfelds auch bereinigen wenn wir möchten.
+					//evt wäre es noch sinnvoll auf eine mindestlänge zu überprüfen
+					return telClean;
+				};
+
+				var isValidTelRegex = function(tel){
+					
+					// den string tel ohne  -, ,/ in die Variable telClean speichern
+					var telClean = tel.replace(/[\ \-\/]/g,'');
+
+					// ^ vom begin weg überprüfen
+					// \+{0,1} ein + Zeichen 0 oder 1 - mal
+					// [0-9]+ 0,1,2,3,4,5,6,7,8,9 mindestens einmal aber bliebig oft
+					// $ bis zum ende hin überprüfen 
+					if(/^\+{0,1}[0-9]+$/.test(telClean)) {
+						return telClean;
+					} else {
+						return false;
+					}
+				};
+
+
+				//Funktion zur überprüfung einer E-Mail Adresse
+				var isValidEmail = function(email) {
+					var at_index = email.indexOf('@'); //kommt das @ vor und an welcher stelle?
+					if(at_index === -1) { //wenn @ nicht vor kommt
+						return false; //fehler kein @
+					} else if ( //@ darf nicht an erste oder letzter stelle stehen 
+						at_index === 0 ||
+						at_index === email.length - 1
+					) {
+						return false;
+					} else if ( //nach dem @ sollte ein punkt vorkommen aber nicht an erster stelle nach dem at
+						email.indexOf('.', at_index + 2) === -1 ||
+						email.indexOf('.', at_index) === at_index + 1
+					) {
+						return false;
+					} else if(email.charAt(email.length - 1) === '.') { // an letzer stelle darf kein punkt stehen
+						return false;
+					} 
+					//wenn all diese Bedingungen erfüllt sind gehen wir davon aus dass die E-Mail valide ist. Eine exakte überprüfung wäre sehr aufwändig und auch ziemlich fehleranfällig
+					return true;
+				};
+				var isValidEmailRegex = function(email) {
+					// ^ vom begin weg überprüfen
+					// [^@]+ beliebig viele aber mindestens ein Zeichen das kein @ ist 
+					// @ ein @ - Zeichen
+					// [^@\.] kein @ und kein . Zeichen
+					// [^@]* beliebig viele kein @ Zeichen
+					// \. ein Punkt Zeichen
+					// [^@]* beliebig viele kein @ Zeichen
+					// [^\.@] ein Zeichen das kein @ und kein . ist
+					// $ bis zum ende hin überprüfen 
+					return /^[^@]+@[^@\.][^@]*\.[^@]*[^\.@]$/.test(email);
+				};
+
+
+				//Eventlistener der vor dem Abschicken das Formulars aufgerufen wird
+				//event wird uns vom Browser übergeben und beinhaltet alle Informationen zu dem eingetretenen Event
+				form.addEventListener('submit', function(event){
+
+					var name_input = document.querySelector('.jName'); //eine Referenz auf das TextInput mit dem Namen
+					var name_value = name_input.value; //der Wert der aktuell in dem Input steht
+					//if(!isEmptyRegex(name_value)) { //mit Regex
+					if(!isEmpty(name_value)) { //wenn im Textinput mehr als nur Whitespace drin steht
+						name_input.classList.remove('error'); //Feld als ok markieren
+					} else {
+						name_input.classList.add('error'); //Feld als invalid markieren
+						event.preventDefault(); //Fehler gefunden Formular nicht abschicken!
+					}
+
+					var tel_input = document.querySelector('.jTel'); //eine Referenz auf das TextInput mit der Telefonnummer
+					var tel_value = tel_input.value;  //der Wert der aktuell in dem Input steht
+					//if(isValidTelRegex(tel_value)) { //mit Regex
+					if(isValidTel(tel_value)) { //wenn die Telefonnummer valide ist
+						tel_input.classList.remove('error'); //Feld als ok markieren
+						tel_input.value = isValidTel(tel_value); //Input Feld mit bereinigter Tel überschreiben 
+					} else {
+						tel_input.classList.add('error'); //Feld als invalid markieren
+						event.preventDefault(); //Fehler gefunden Formular nicht abschicken!
+					}
+
+					//check mail
+					var email_input = document.querySelector('.jEmail'); //eine Referenz auf das TextInput mit der Email
+					var email_value = email_input.value;  //der Wert der aktuell in dem Input steht
+					//if(isValidEmailRegex(email_value)) { mit Regex
+					if(isValidEmail(email_value)) { //überprüfung
+						document.querySelector('.jEmail').classList.remove('error'); //Feld als ok markieren
+					} else {
+						document.querySelector('.jEmail').classList.add('error'); //Feld als invalid markieren
+						event.preventDefault(); //Fehler gefunden Formular nicht abschicken!
+					}
+
+				});
+			});
+		</script>
+	</body>
+</html>
