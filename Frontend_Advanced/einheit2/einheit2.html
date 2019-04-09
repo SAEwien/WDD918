@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Einheit 2</title>
+
+  <style>
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      /* grid-template-rows: 200px 200px 200px; */
+      /* grid-auto-rows: minmax(100px, auto); */
+      grid-gap: 20px 50px;
+      grid-row-gap: 20px;
+      grid-column-gap: 20px;
+    }
+
+    .item {
+      border: 5px solid red;
+      min-width: 0;
+    }
+
+    .item:first-child {
+      grid-column: span 2;
+    }
+  
+
+    .item:nth-child(6) {
+      grid-column: 1 / -1;
+    }
+
+    img {
+      max-width: 100%;
+      vertical-align: middle;
+      /* display: block; */
+    }
+
+  
+  </style>
+
+</head>
+<body>
+
+  <div class="grid">
+    <div class="item">A
+    </div>
+    <div class="item">A</div>
+    <div class="item"><img src="http://placeimg.com/700/400"></div>
+    <div class="item">A</div>
+    <div class="item">A</div>
+    <div class="item">A</div>
+    <div class="item">A</div>
+    <div class="item">A</div>
+    <div class="item">A</div>
+    <div class="item">A</div>
+    <div class="item">A</div>
+    <div class="item">A</div>
+    <div class="item">A</div>
+    <div class="item">A</div>
+    <div class="item">A</div>
+  </div>
+  
+</body>
+</html>

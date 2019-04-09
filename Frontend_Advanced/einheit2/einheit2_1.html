@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Einheit 2</title>
+
+  <style>
+    .grid {
+      display: grid;
+      grid-template-areas: 
+        "kopf"
+        "main"
+        "sidebar"
+        "footer"
+      }
+
+    @media (min-width: 600px) {
+    .grid {
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: 100px 250px 250px 100px;
+      /* grid-template: 100px 250px 250px 100px /  2fr 1fr; */
+      grid-template-areas: 
+        "kopf kopf"
+        "main sidebar"
+        "main sidebar"
+        "footer footer"
+      }
+    }
+
+    .grid > * {
+      border: 1px solid red;
+    }
+
+    section {
+      grid-area: main;
+    }
+
+    aside {
+      grid-area: sidebar;
+    }
+
+    header {
+      grid-area: kopf;
+    }
+
+    footer {
+      grid-area: footer;
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="grid">
+    <header>
+      header
+      <strong>asfas</strong>
+    </header>
+
+    <section>
+      section
+    </section>
+    
+    <aside>
+      aside
+    </aside>
+
+    <footer>
+      footer
+    </footer>
+  </div>
+  
+</body>
+</html>

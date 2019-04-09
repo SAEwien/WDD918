@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+</head>
+
+<style>
+  .block {
+    padding: 30px 0;
+  }
+
+  code {
+    font-size: 1.3rem;
+  }
+</style>
+
+<body>
+  <div class="container">
+
+    <div class="block">
+      <h1>Preprocessors</h1>
+      <h2>Die beliebtesten Präprozessoren</h2>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <a href="http://sass-lang.com/">Sass</a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://lesscss.org/">less</a>
+        </li>
+        <li class="list-group-item">
+          <a href="http://stylus-lang.com/">stylus</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <h2>sass</h2>
+
+      <p>
+        Dateinendung:
+        <code>.scss</code>
+        <br /> Kommentare:
+        <code>/* */</code>,
+        <code>//</code>
+      </p>
+
+    </div>
+    <div class="block">
+      <h3>Installation</h3>
+      <h4>Mac</h4>
+      <code><pre>
+  # Homebrew installieren
+  # https://brew.sh/
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  brew doctor
+
+  # Sass installieren
+  brew install sass/sass/sass
+  sass -v </pre></code>
+      
+      <h4>Windows</h4>
+      <code>
+        <pre>
+  # Chocolately installieren
+  # https://chocolatey.org/
+  choco outdated
+  
+  # Sass installieren
+  choco install sass
+  sass -v </pre>
+      </code>
+    </div>
+    <div class="block">
+      <h3>Kompilierung</h3>
+      <code><pre>
+  sass projekt/scss/main.scss:projekt/css/main.css</pre></code>
+        
+      <h4>Kompilierung laufend</h4>
+      <code><pre>
+  sass --watch projekt/scss:projekt/css</pre></code>
+
+      <h4>Mit Komprimierung</h4>
+      <code><pre>
+  sass --watch scss:css --style compressed</pre></code>
+    </div>
+    <div class="block">
+      <h3>Variablen</h3>
+
+      <code>
+        <pre>
+  $primary-color: #333;
+  
+  body {
+      color: $primary-color;
+  }</pre>
+      </code>
+
+    </div>
+    <div class="block">
+      <h3>Nesting</h3>
+
+      <h4>Einfaches Nesting</h4>
+
+      <code>
+        <pre>
+  ul {
+    li {
+      color: red;
+    }
+  }</pre>
+      </code>
+
+      <h4>Nesting: &amp; = Parent Selector</h4>
+
+      <code>
+        <pre>
+  a {
+    font-weight: bold;
+  
+    &amp;:link {
+      text-decoration: none;
+    }
+  
+    &amp;:hover {
+      text-decoration: underline;
+    }
+  }</pre>
+      </code>
+
+      <h4>Nesting: &amp; = Parent Selector</h4>
+
+      <code>
+        <pre>
+  .form {
+    border: 1px solid red;
+  
+    &amp;__item {
+      background-color: red;
+    }
+  }</pre>
+      </code>
+
+      <h4>Parent Nesting</h4>
+
+      <code>
+        <pre>
+  li {
+    color: blue;
+  
+    ul &amp; {
+      color: red;
+    }
+  }</pre>
+      </code>
+
+      <h4>Media Query Nesting</h4>
+
+      <code>
+        <pre>
+  .element {
+    width: 300px;
+    
+    @media screen and (min-width: 400px) {
+      width: 500px;
+    }
+  }</pre>
+      </code>
+    </div>
+    <div class="block">
+      <h3>Partials</h3>
+      <p>Dateien, die eingebunden aber nicht eigens kompiliert werden.</p>
+
+      <p>
+        z.B.
+        <br/>
+        <code>main.scss</code> (wird kompiliert)
+        <br />
+        <code>_header.scss</code>
+        <br/>
+        <code>_login.scss</code>
+      </p>
+
+      <code>
+        <pre>
+  ul {
+    li {
+      color: red;
+    }
+  }</pre>
+      </code>
+
+      <h3>Import</h3>
+      <code>
+        <pre>
+  @import 'header';
+    </pre>
+      </code>
+    </div>
+    <div class="block">
+      <h3>Mixins</h3>
+      <code>
+        <pre>
+  @mixin wrapper($maxWidth) {
+    width: 100%;
+    max-width: $maxWidth;
+    margin: 0 auto;
+  }
+  
+  .box {
+    @include wrapper(960px); 
+  }</pre>
+      </code>
+    </div>
+    <div class="block">
+      <h3>Extend/Inheritance</h3>
+
+      <code>
+        <pre>
+  .message {
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: #333;
+  }
+  
+  .success {
+    @extend .message;
+    border-color: green;
+  }
+  
+  .error {
+    @extend .message;
+    border-color: red;
+  }</pre>
+      </code>
+    </div>
+    <div class="block">
+      <h3>Operatoren</h3>
+
+      <p>Es ist möglich in Sass zu rechnen:
+        <code>+</code>,
+        <code>-</code>,
+        <code>*</code>,
+        <code>/</code>, and
+        <code>%</code>.</p>
+
+      <code>
+        <pre>
+  article {
+      width: 100% / 4;
+  }
+  </pre>
+      </code>
+    </div>
+    <div class="block">
+      <h3>if-Anweisungen</h3>
+
+      <code>
+        <pre>
+  @mixin alert($type) {
+    @if $type == success {
+      background-color: green;
+    } @else if $type == error {
+      background-color: red;
+    } @else {
+      background-color: blue;
+    }
+  }
+  
+  .message {
+      @include alert('success'); 
+  }</pre>
+      </code>
+    </div>
+    <div class="block">
+
+      <h3>for-Loops</h3>
+
+      <code>
+        <pre>
+  @for $i from 1 through 3 {
+    .item-#{$i} { width: 2em * $i; }
+  }</pre>
+      </code>
+    </div>
+  </div>
+  <!-- .container-fluid -->
+</body>
+
+</html>

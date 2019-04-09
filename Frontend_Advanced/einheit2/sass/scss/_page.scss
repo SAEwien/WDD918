@@ -1,0 +1,76 @@
+
+body {
+  background: $bg;
+  border: 10px solid $highlight;
+  font-size: $base-font-size;
+  margin-bottom: $spacing;
+}
+
+li {
+  border: 10px solid red;
+}
+
+ul {
+  border-top: 5px solid $highlight;
+  padding: $spacing;
+
+  li {
+    border-color: green;
+  }
+
+  a {
+    color: blue;
+  }
+}
+
+a {
+  &:link {
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: red;
+  }
+}
+
+.list {
+  color: red;
+
+  &--dark {
+      color: #000;
+  }
+
+  &__item {
+    background: red;
+
+    &--dark {
+      color: #000;
+    }
+  }
+
+  &__link {
+    background: red;
+  }
+}
+
+li {
+    background: blue;
+
+  ol & {
+    background: red;
+  }
+
+  @media (min-width: 600px) {
+    background: green;
+
+    @media (min-height: 400px) {
+      background: red;
+    }
+  }
+}
+
+// @media (min-width: 600px) {
+//   li {
+//     background: green;
+//   }
+// }
